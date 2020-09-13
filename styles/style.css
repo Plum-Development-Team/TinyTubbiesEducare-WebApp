@@ -1,0 +1,147 @@
+@import url("https://fonts.googleapis.com/css?family=Kalam &display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  min-height: 100vh;
+  background-image: url("/Resources/animation.gif");
+  background-size: 600px;
+  font-family: 'Kalam';
+}
+
+#main-img {
+  float: left;
+}
+
+.form {
+  -webkit-box-align: right;
+      -ms-flex-align: right;
+          align-items: right;
+  position: relative;
+  width: 350px;
+  float: right;
+  padding: 40px 40px 60px;
+  background: #007bff;
+  border-radius: 10px;
+  text-align: center;
+  -webkit-box-shadow: -5px -5px 10px rgba(255, 255, 255, 0.05), 5px 5px 15px rgba(0, 0, 0, 0.5);
+          box-shadow: -5px -5px 10px rgba(255, 255, 255, 0.05), 5px 5px 15px rgba(0, 0, 0, 0.5);
+}
+
+.form label {
+  color: black;
+  font-size: 15px;
+}
+
+.form h2 {
+  color: black;
+  font-size: 21px;
+}
+
+.form .material-icons {
+  font-size: 60px;
+  color: white;
+}
+
+.form .input {
+  text-align: left;
+  margin-top: 40px;
+}
+
+.form .input .inputBox {
+  margin-top: 20px;
+}
+
+.form .input .inputBox {
+  display: block;
+  color: white;
+  margin-bottom: 5px;
+  font-size: 1px;
+}
+
+.form .input .inputBox input {
+  width: 100%;
+  height: 50px;
+  background-color: #1a88ff;
+  border: none;
+  outline: none;
+  border-radius: 40px;
+  padding: 5px 15px;
+  color: #fff;
+  font-size: 18px;
+  color: black;
+  -webkit-box-shadow: inset -2px -2px 6px rgba(255, 255, 255, 0.01), inset 2px 2px 6px rgba(0, 0, 0, 0.8);
+          box-shadow: inset -2px -2px 6px rgba(255, 255, 255, 0.01), inset 2px 2px 6px rgba(0, 0, 0, 0.8);
+}
+
+.form .input .inputBox input[type="submit"] {
+  margin-top: 20px;
+  -webkit-box-shadow: -2px -2px 6px rgba(255, 255, 255, 0.1), 2px 2px 6px rgba(0, 0, 0, 0.8);
+          box-shadow: -2px -2px 6px rgba(255, 255, 255, 0.1), 2px 2px 6px rgba(0, 0, 0, 0.8);
+  color: white;
+  font-size: 20px;
+}
+
+.form .input .inputBox input[type="submit"]:active {
+  color: #006c9c;
+  margin-top: 20px;
+  -webkit-box-shadow: inset -2px -2px 6px rgba(255, 255, 255, 0.1), inset 2px 2px 6px rgba(0, 0, 0, 0.8);
+          box-shadow: inset -2px -2px 6px rgba(255, 255, 255, 0.1), inset 2px 2px 6px rgba(0, 0, 0, 0.8);
+}
+
+.form .input .inputBox input::-webkit-input-placeholder {
+  color: #555;
+  font-size: 18px;
+}
+
+.form .input .inputBox input:-ms-input-placeholder {
+  color: #555;
+  font-size: 18px;
+}
+
+.form .input .inputBox input::-ms-input-placeholder {
+  color: #555;
+  font-size: 18px;
+}
+
+.form .input .inputBox input::placeholder {
+  color: #555;
+  font-size: 18px;
+}
+
+.forget {
+  margin-top: 30px;
+  color: black;
+}
+
+.forget a {
+  color: #ff0047;
+}
+
+input[type="submit"] {
+  color: yellow;
+}
+
+input[type="submit"]:hover {
+  -webkit-transform: scale(0.9);
+          transform: scale(0.9);
+  -webkit-transition: linear;
+  transition: linear;
+  cursor: pointer;
+  color: yellow;
+}
+/*# sourceMappingURL=style.css.map */
