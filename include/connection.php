@@ -1,3 +1,3 @@
 <?php
-    $con = mysqli_connect("localhost","root","","tinytubieseducare") or die("Connection was not established");
+    $con = mysqli_connect("localhost","root","","tinytubbieseducare") or die("Connection was not established");
 ?>

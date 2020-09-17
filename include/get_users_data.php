@@ -1,5 +1,5 @@
 <?php
-    $con = mysqli_connect("localhost","root","","tinytubieseducare");
+    $con = mysqli_connect("localhost","root","","tinytubbieseducare");
 
 	$user = "SELECT * FROM users";
 			
