@@ -26,7 +26,8 @@
             $user_name = $row['user_name'];
             
             $_SESSION['username'] = $user_name;
-            echo "<script>window.open('chats.php?user_name=$user_name','_self')</script>";
+            //echo "<script>window.open('chats.php?user_name=$user_name','_self')</script>";
+            echo "<script>window.open('dashboard.php?user_name=$user_name','_self')</script>";
         
         }
         else {
