@@ -61,7 +61,7 @@ if (!isset($_SESSION['username'])) {
 					<h1> Messages</h1><br>
 					<hr>
 					<label for="personal" style="font-size:25px;">Personal Messages</label>
-					<a href="#" class="pMessages" id="pMessages" data-toggle="dropdown">
+					<a href="chats.php?user_name=<?php echo $_SESSION['username']?>" class="pMessages" id="pMessages" data-toggle="dropdown">
 						<span class="label label-pill label-danger countP" style="border-radius:20px;"></span>
 						<span class="glyphicon glyphicon-envelope" style="font-size:25px;"></span>
 					</a> <br> <br>

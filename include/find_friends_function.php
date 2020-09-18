@@ -43,7 +43,7 @@
             
             // if the button chat with user is clicked and we are going back because we are in the include folder
             if(isset($_POST['add'])){
-                echo "<script>window.open('../home.php?user_name=$user_name','_self')</script>";
+                echo "<script>window.open('../chats.php?user_name=$user_name','_self')</script>";
             }	
 		}
 		

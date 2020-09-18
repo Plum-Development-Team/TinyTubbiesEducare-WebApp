@@ -34,10 +34,10 @@ if (isset($_POST["view_personal"])) {
     }
     */
     $user = $_SESSION['username'];
-    $sql = "CALL unreadMessages($user)";
+    $func = "CALL unreadMessages($user)";
     
     //$query_1 = "SELECT * FROM users_chat WHERE receiver_username= '$user' AND msg_status='unread'";
-    $result_1 = mysqli_query($connect,$sql );
+    $result_1 = mysqli_query($connect,$func );
     $count = mysqli_num_rows($result_1);
     $data = array(
         'notification_personal'   => $output,
