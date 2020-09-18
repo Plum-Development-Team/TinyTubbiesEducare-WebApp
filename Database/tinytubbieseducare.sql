@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 17, 2020 at 05:20 PM
+-- Generation Time: Sep 18, 2020 at 06:46 PM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 7.3.2
 
@@ -46,6 +46,14 @@ CREATE TABLE `child` (
   `user_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `child`
+--
+
+INSERT INTO `child` (`child_id`, `name`, `surname`, `class_id`, `school_id`, `user_id`) VALUES
+(1, 'Daniel', 'Aaron', 1, 1, 1),
+(2, 'Casey', 'Blignaut', 3, 2, 2);
+
 -- --------------------------------------------------------
 
 --
@@ -55,11 +63,18 @@ CREATE TABLE `child` (
 CREATE TABLE `class` (
   `class_id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
-  `repository` varchar(255) NOT NULL,
   `photo` varchar(255) NOT NULL,
-  `school_id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL
+  `school_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `class`
+--
+
+INSERT INTO `class` (`class_id`, `name`, `photo`, `school_id`) VALUES
+(1, 'Nursery', '', 1),
+(2, 'Educare', '', 1),
+(3, 'Educare', '', 2);
 
 -- --------------------------------------------------------
 
@@ -87,6 +102,14 @@ CREATE TABLE `school` (
   `email` varchar(255) NOT NULL,
   `phone` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `school`
+--
+
+INSERT INTO `school` (`school_id`, `name`, `address`, `email`, `phone`) VALUES
+(1, 'Grassy Park', '38 4th Avenue, Grassy Park, 7888', 'grassypark.tinytubbies@yahoo.com', '0217062609'),
+(2, 'Southfield', '17 Renee Avenue, Southfield, 7800', 'southfield.tinytubbies@yahoo.com', '021705023');
 
 -- --------------------------------------------------------
 
@@ -125,6 +148,7 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`user_id`, `user_name`, `user_pass`, `user_email`, `user_profile`, `user_country`, `user_gender`, `forgotten_answer`, `log_in`) VALUES
 (1, 'chiko', '12345678', 'chiko@gmail.com', 'images/mcLogo.png.40', 'Camps Bay', 'Male', 'chikomutandwa', 'Online'),
+(2, 'Yola', '12345678', 'yola@gmail.com', 'images/images.png', 'South Africa', 'Male', 'dog', 'Offline'),
 (3, 'sam', '12345678', 'sam@gmail.com', 'images/black-background-hd-wallpapers-11.jpg.52', 'GrassyPark', 'Male', '', 'Offline'),
 (4, 'mutale', '12345678', 'mutale@gmail.com', 'images/images.png', 'Clarmont', 'Female', '', 'Offline'),
 (5, 'Kangwa', '87654321', 'kangwa@gmail.com', 'images/1509844786195.jpeg.69', 'Mowbray', 'Female', '', 'Offline'),
@@ -151,7 +175,7 @@ CREATE TABLE `users_chat` (
 --
 
 INSERT INTO `users_chat` (`msg_id`, `sender_username`, `receiver_username`, `msg_content`, `msg_status`, `msg_date`) VALUES
-(2, 'mutale', 'chiko', 'hi', 'unread', '2020-07-20 21:26:37'),
+(2, 'mutale', 'chiko', 'hi', 'read', '2020-07-20 21:26:37'),
 (3, 'chiko', 'mutale', 'how are you', 'read', '2020-07-20 21:33:30'),
 (4, 'mutale', 'chiko', 'hi', 'read', '2020-07-20 21:33:45'),
 (5, 'mutale', 'chiko', 'hi', 'read', '2020-07-21 13:28:43'),
@@ -219,8 +243,7 @@ ALTER TABLE `child`
 --
 ALTER TABLE `class`
   ADD PRIMARY KEY (`class_id`),
-  ADD KEY `fk_school_id_for_class` (`school_id`),
-  ADD KEY `fk_staff_id_for_class` (`user_id`);
+  ADD KEY `fk_school_id_for_class` (`school_id`);
 
 --
 -- Indexes for table `school`
@@ -279,8 +302,7 @@ ALTER TABLE `child`
 -- Constraints for table `class`
 --
 ALTER TABLE `class`
-  ADD CONSTRAINT `fk_school_id_for_class` FOREIGN KEY (`School_Id`) REFERENCES `school` (`School_Id`) ON DELETE CASCADE,
-  ADD CONSTRAINT `fk_staff_id_for_class` FOREIGN KEY (`User_Id`) REFERENCES `users` (`user_id`) ON DELETE CASCADE;
+  ADD CONSTRAINT `fk_school_id_for_class` FOREIGN KEY (`school_id`) REFERENCES `school` (`School_Id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `tasklist`
