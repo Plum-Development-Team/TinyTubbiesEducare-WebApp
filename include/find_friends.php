@@ -33,7 +33,7 @@
                         $row=mysqli_fetch_array($run_user);
                                 
                         $user_name = $row['user_name'];
-                        echo"<a class='navbar-brand' href='../home.php?user_name=$user_name'>MyChat</a>";
+                        echo"<a class='navbar-brand' href='../chats.php?user_name=$user_name'>MyChat</a>";
                     ?>
                 </a>
             </nav><br>
