@@ -2,8 +2,8 @@
 session_start();
 
 if (!isset($_SESSION['username'])) {
-  $_SESSION['msg'] = "You must log in first";
-  header('location: sign-in.php');
+	$_SESSION['msg'] = "You must log in first";
+	header('location: sign-in.php');
 }
 
 /*if (isset($_GET['logout'])) {
@@ -17,12 +17,12 @@ if (!isset($_SESSION['username'])) {
 <html>
 
 <head>
-  <title>Home</title>
+	<title>Home</title>
 
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
-  <link rel="stylesheet" type="text/css" href="styles/styleYola.css?v=<?php echo time(); ?>">
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+	<link rel="stylesheet" type="text/css" href="styles/styleYola.css?v=<?php echo time(); ?>">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 
 
 
@@ -33,42 +33,8 @@ if (!isset($_SESSION['username'])) {
 
 <body>
 
-<<<<<<< Updated upstream
-	<header>
-		<div class="navbar">
-			<div class="logo">
-				<a href="">Tubbies</a>
-			</div>
-			<div class="user-profile">
-				<!-- logged in user information -->
-				<?php if (isset($_SESSION['username'])) : ?>
-					<p>
-						<a href="">
-							<strong><?php echo $_SESSION['username']; ?></strong>
-							<!--Need to change image to profile pic of account-->
-							<img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/3364143/download+%281%29.png" alt="profile pic" style="width:42px;height:42px;">
-						</a>
-						<a href="index.php?logout='1'" style="color: red;">logout</a>
-					</p>
-				<?php endif ?>
-			</div>
-		</div>
-	</header>
-
-	<div class="pos">
-		<center>
-			<div class="container">
-				<div id="st-box">
-					<h1> Messages</h1><br>
-					<hr>
-					<label for="personal" style="font-size:25px;">Personal Messages</label>
-					<a href="chats.php?user_name=<?php echo $_SESSION['username']?>" class="pMessages" id="pMessages" data-toggle="dropdown">
-						<span class="label label-pill label-danger countP" style="border-radius:20px;"></span>
-						<span class="glyphicon glyphicon-envelope" style="font-size:25px;"></span>
-					</a> <br> <br>
-=======
-  <!-- navbar -->
-  <!-- <div id="header">
+<!-- navbar -->
+<!-- <div id="header">
 <nav class="navbar navbar-expand-lg ">
     <div class="container">
       <a class="navbar-brand" href="index.html" >
@@ -104,78 +70,77 @@ if (!isset($_SESSION['username'])) {
 <br> -->
 
 
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">Navbar</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
-        <li class="nav-item active">
-          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Features</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Pricing</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link disabled" href="#">Disabled</a>
-        </li>
-      </ul>
-    </div>
-  </nav>
-
-
-
-
-
-  <div class="navbar">
-    <div class="logo">
-      <a href="dashboard.php"> <img src="Resources/Logo.png" alt=""></a>
-    </div>
-    <div class="user-profile">
-      <!-- logged in user information -->
-      <?php if (isset($_SESSION['username'])) : ?>
-        <p>
-          <a href="">
-            <strong><?php echo $_SESSION['username']; ?></strong>
-            <!--Need to change image to profile pic of account-->
-            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/3364143/download+%281%29.png" alt="profile pic" style="width:42px;height:42px;">
-          </a>
-          <a href="signin.php?logout='1'" style="color: red;">logout</a>
-        </p>
-      <?php endif ?>
-    </div>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">Navbar</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Features</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Pricing</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link disabled" href="#">Disabled</a>
+      </li>
+    </ul>
   </div>
->>>>>>> Stashed changes
+</nav>
 
 
-  <div class="pos">
 
-    <div class="container">
-      <div id="st-box">
-        <h1> Messages</h1><br>
-        <hr>
-        <label for="personal" style="font-size:25px;">Personal Messages</label>
-        <a href="#" class="pMessages" id="pMessages" data-toggle="dropdown">
-          <span class="label label-pill label-danger countP" style="border-radius:20px;"></span>
-          <span class="glyphicon glyphicon-envelope" style="font-size:25px;"></span>
-        </a> <br> <br>
 
-        <label for="class" style="font-size:25px;">Class Messages</label>
-        <a href="#" class="cMessages" id="cMessages" data-toggle="dropdown">
-          <span class="label label-pill label-danger countG" style="border-radius:20px;"></span>
-          <span class="glyphicon glyphicon-envelope" style="font-size:25px;"></span>
-        </a> <br>
-      </div>
 
-      <div id="nd-box">
-        <h1> Classes</h1><br>
-        <hr>
+		<div class="navbar">
+			<div class="logo">
+				<a href="dashboard.php"> <img src="Resources/Logo.png" alt=""></a>
+			</div>
+			<div class="user-profile">
+				<!-- logged in user information -->
+				<?php if (isset($_SESSION['username'])) : ?>
+					<p>
+						<a href="">
+							<strong><?php echo $_SESSION['username']; ?></strong>
+							<!--Need to change image to profile pic of account-->
+							<img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/3364143/download+%281%29.png" alt="profile pic" style="width:42px;height:42px;">
+						</a>
+						<a href="signin.php?logout='1'" style="color: red;">logout</a>
+					</p>
+				<?php endif ?>
+			</div>
+		</div>
+	
 
-        <!--
+	<div class="pos">
+	
+			<div class="container">
+				<div id="st-box">
+					<h1> Messages</h1><br>
+					<hr>
+					<label for="personal" style="font-size:25px;">Personal Messages</label>
+					<a href="#" class="pMessages" id="pMessages" data-toggle="dropdown">
+						<span class="label label-pill label-danger countP" style="border-radius:20px;"></span>
+						<span class="glyphicon glyphicon-envelope" style="font-size:25px;"></span>
+					</a> <br> <br>
+
+					<label for="class" style="font-size:25px;">Class Messages</label>
+					<a href="#" class="cMessages" id="cMessages" data-toggle="dropdown">
+						<span class="label label-pill label-danger countG" style="border-radius:20px;"></span>
+						<span class="glyphicon glyphicon-envelope" style="font-size:25px;"></span>
+					</a> <br>
+				</div>
+
+				<div id="nd-box">
+					<h1> Classes</h1><br>
+					<hr>
+
+					<!--
 					<label for="personal" style="font-size:15px;">Grade</label>
 					<a href="#" class="pMessages" id="pMessages" data-toggle="dropdown">
 						<span class="label label-pill label-danger count" style="border-radius:20px;"></span>
@@ -183,23 +148,16 @@ if (!isset($_SESSION['username'])) {
 					</a> <br>
 					-->
 
-        </form>
-      </div>
-      <div id="rd-box">
-        <h1> To-do List</h1><br>
-        <hr>
+					</form>
+				</div>
+				<div id="rd-box">
+					<h1> To-do List</h1><br>
+					<hr>
 
-<<<<<<< Updated upstream
 				</div>
 			</div>
-		</center>
+	
 	</div>
-=======
-      </div>
-    </div>
-
-  </div>
->>>>>>> Stashed changes
 </body>
 
 
@@ -209,65 +167,65 @@ if (!isset($_SESSION['username'])) {
 </html>
 
 
-<script>
-  // Personal notification 
-  $(document).ready(function() {
-    function pMessages(view_personal = '') {
-      $.ajax({
-        url: "include/fetch.php",
-        method: "POST",
-        data: {
-          view_personal: view_personal
-        },
-        dataType: "json",
-        success: function(data) {
-          $('.dropdown-menu').html(data.notification_personal);
-          if (data.unseen_notification_personal > 0) {
-            $('.countP').html(data.unseen_notification_personal);
-          }
+<script >
+	// Personal notification 
+	$(document).ready(function() {
+        function pMessages(view_personal = '') {
+            $.ajax({
+                url: "include/fetch.php"
+                method: "POST",
+                data: {
+                    view_personal: view_personal
+                },
+                dataType: "json",
+                success: function(data) {
+                    $('.dropdown-menu').html(data.notification_personal);
+                    if (data.unseen_notification_personal > 0) {
+                        $('.countP').html(data.unseen_notification_personal);
+                    }
+                }
+            });
         }
-      });
-    }
-
-    pMessages();
-    $(document).on('click', '.pMessages', function() {
-      $('.countP').html('');
-      pMessages('yes');
+ 
+        pMessages();
+        $(document).on('click', '.pMessages', function() {
+            $('.countP').html('');
+            pMessages('yes');
+        });
+ 
+        setInterval(function() {
+            pMessages();;
+        }, 1000);
     });
-
-    setInterval(function() {
-      pMessages();;
-    }, 1000);
-  });
-
-  // Class notification
-
-  $(document).ready(function() {
-    function cMessages(view_class = '') {
-      $.ajax({
-        url: "include/fetch.php",
-        method: "POST",
-        data: {
-          view_class: view_class
-        },
-        dataType: "json",
-        success: function(data) {
-          $('.dropdown-menu').html(data.notification_group);
-          if (data.unseen_notification_group > 0) {
-            $('.countG').html(data.unseen_notification_group);
-          }
+ 
+    // Class notification
+ 
+    $(document).ready(function() {
+        function cMessages(view_class = '') {
+            $.ajax({
+                url: "include/fetch.php",
+                method: "POST",
+                data: {
+                    view_class: view_class
+                },
+                dataType: "json",
+                success: function(data) {
+                    $('.dropdown-menu').html(data.notification_group);
+                    if (data.unseen_notification_group > 0) {
+                        $('.countG').html(data.unseen_notification_group);
+                    }
+                }
+            });
         }
-      });
-    }
-
-    cMessages();
-    $(document).on('click', '.cMessages', function() {
-      $('.countG').html('');
-      cMessages('yes');
+ 
+        cMessages();
+        $(document).on('click', '.cMessages', function() {
+            $('.countG').html('');
+            cMessages('yes');
+        });
+ 
+        setInterval(function() {
+            cMessages();;
+        }, 1000);
     });
-
-    setInterval(function() {
-      cMessages();;
-    }, 1000);
-  });
 </script>
