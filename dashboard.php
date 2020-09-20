@@ -33,10 +33,73 @@ if (!isset($_SESSION['username'])) {
 
 <body>
 
-	<header>
+<!-- navbar -->
+<!-- <div id="header">
+<nav class="navbar navbar-expand-lg ">
+    <div class="container">
+      <a class="navbar-brand" href="index.html" >
+            <img class="logo" src="Resources/Logo.png" alt="" onclick="scrollto('index')">
+          </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="line"></span> 
+        <span class="line"></span> 
+        <span class="line" style="margin-bottom: 0;"></span>
+          </button>
+      
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item" onclick="scrollto('services')">
+            <strong><a class="nav-link" href="#services">Our Services</a></strong>
+          </li>
+          <li class="nav-item" onclick="scrollto('contact')">
+            <strong><a class="nav-link" href="#contact">Contact Us</a></strong>
+          </li>
+          <li class="nav-item" onclick="scrollto('about')">
+            <strong><a class="nav-link" href="#about">About Us</a></strong>
+          </li>
+          <li class="nav-item" >
+           <strong> <a class="nav-link" href="signin.php" >Login</a></strong>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</div>
+<br>
+<br>
+<br> -->
+
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">Navbar</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Features</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Pricing</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link disabled" href="#">Disabled</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+
+
+
+
 		<div class="navbar">
 			<div class="logo">
-				<a href="">Tubbies</a>
+				<a href="dashboard.php"> <img src="Resources/Logo.png" alt=""></a>
 			</div>
 			<div class="user-profile">
 				<!-- logged in user information -->
@@ -47,15 +110,15 @@ if (!isset($_SESSION['username'])) {
 							<!--Need to change image to profile pic of account-->
 							<img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/3364143/download+%281%29.png" alt="profile pic" style="width:42px;height:42px;">
 						</a>
-						<a href="index.php?logout='1'" style="color: red;">logout</a>
+						<a href="signin.php?logout='1'" style="color: red;">logout</a>
 					</p>
 				<?php endif ?>
 			</div>
 		</div>
-	</header>
+	
 
 	<div class="pos">
-		<center>
+	
 			<div class="container">
 				<div id="st-box">
 					<h1> Messages</h1><br>
@@ -93,7 +156,7 @@ if (!isset($_SESSION['username'])) {
 
 				</div>
 			</div>
-		</center>
+	
 	</div>
 </body>
 
