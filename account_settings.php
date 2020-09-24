@@ -31,26 +31,31 @@ if (!isset($_SESSION['user_email'])) {
         body {
             overflow-x: hidden;
         }
-        form{
-            border:2px solid darkcyan;
-            border-radius:15px;
-            padding:15px;
-            color:black;
-            background-color:whitesmoke;
+
+        form {
+            border: 2px solid darkcyan;
+            border-radius: 15px;
+            padding: 15px;
+            color: black;
+            background-color: whitesmoke;
         }
-        form h2{
-            text-align:center;
+
+        form h2 {
+            text-align: center;
         }
-    label{
-        text-decoration:bold;
-        font-size:20px;
-    }
-    .fa-user{
-       font-size:20px;
-    }
-    .fa-fw{
-        font-size:20px;
-    }
+
+        label {
+            text-decoration: bold;
+            font-size: 20px;
+        }
+
+        .fa-user {
+            font-size: 20px;
+        }
+
+        .fa-fw {
+            font-size: 20px;
+        }
     </style>
 
     <body>
@@ -102,14 +107,14 @@ if (!isset($_SESSION['user_email'])) {
                     <label for="">Profile Image</label>
 
                     <!-- when the user wants to change their profile pic upload.php will be called after update button has been clicked -->
-                        <a class="btn btn-lg" style="text-decoration: none;font-size: 15px;" href="upload.php">
+                    <a class="btn btn-lg" style="text-decoration: none;font-size: 15px;" href="upload.php">
                         <i class="fa fa-user" aria-hidden="true"></i>
 
-                         </a> <br>
+                    </a> <br>
 
                     <label for="">Email</label>
 
-                         <input class="form-control" type="email" name="u_email" required="required" value="<?php echo $user_email; ?>">
+                    <input class="form-control" type="email" name="u_email" required="required" value="<?php echo $user_email; ?>">
 
                     <label for="">Campus</label>
 
@@ -135,7 +140,7 @@ if (!isset($_SESSION['user_email'])) {
                     <!-- recovery option start -->
 
 
-                    <label for="">Change Password</label> 
+                    <label for="">Change Password</label>
 
                     <a class="btn btn-default" style="text-decoration: none;font-size: 15px;" href="change_password.php">
                         <i class="fa fa-key fa-fw" aria-hidden="true"></i>
