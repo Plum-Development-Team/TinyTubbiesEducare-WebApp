@@ -33,8 +33,8 @@ if (!isset($_SESSION['username'])) {
 
 <body>
 
-<!-- navbar -->
-<!-- <div id="header">
+	<!-- navbar -->
+	<!-- <div id="header">
 <nav class="navbar navbar-expand-lg ">
     <div class="container">
       <a class="navbar-brand" href="index.html" >
@@ -70,77 +70,77 @@ if (!isset($_SESSION['username'])) {
 <br> -->
 
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">Navbar</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarNav">
-    <ul class="navbar-nav">
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Features</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Pricing</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link disabled" href="#">Disabled</a>
-      </li>
-    </ul>
-  </div>
-</nav>
-
-
-
-
-
-		<div class="navbar">
-			<div class="logo">
-				<a href="dashboard.php"> <img src="Resources/Logo.png" alt=""></a>
-			</div>
-			<div class="user-profile">
-				<!-- logged in user information -->
-				<?php if (isset($_SESSION['username'])) : ?>
-					<p>
-						<a href="">
-							<strong><?php echo $_SESSION['username']; ?></strong>
-							<!--Need to change image to profile pic of account-->
-							<img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/3364143/download+%281%29.png" alt="profile pic" style="width:42px;height:42px;">
-						</a>
-						<a href="signin.php?logout='1'" style="color: red;">logout</a>
-					</p>
-				<?php endif ?>
-			</div>
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+		<a class="navbar-brand" href="#">Navbar</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarNav">
+			<ul class="navbar-nav">
+				<li class="nav-item active">
+					<a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="#">Features</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="#">Pricing</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link disabled" href="#">Disabled</a>
+				</li>
+			</ul>
 		</div>
-	
+	</nav>
+
+
+
+
+
+	<div class="navbar">
+		<div class="logo">
+			<a href="dashboard.php"> <img src="Resources/Logo.png" alt=""></a>
+		</div>
+		<div class="user-profile">
+			<!-- logged in user information -->
+			<?php if (isset($_SESSION['username'])) : ?>
+				<p>
+					<a href="">
+						<strong><?php echo $_SESSION['username']; ?></strong>
+						<!--Need to change image to profile pic of account-->
+						<img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/3364143/download+%281%29.png" alt="profile pic" style="width:42px;height:42px;">
+					</a>
+					<a href="signin.php?logout='1'" style="color: red;">logout</a>
+				</p>
+			<?php endif ?>
+		</div>
+	</div>
+
 
 	<div class="pos">
-	
-			<div class="container">
-				<div id="st-box">
-					<h1> Messages</h1><br>
-					<hr>
-					<label for="personal" style="font-size:25px;">Personal Messages</label>
-					<a href="#" class="pMessages" id="pMessages" data-toggle="dropdown">
-						<span class="label label-pill label-danger countP" style="border-radius:20px;"></span>
-						<span class="glyphicon glyphicon-envelope" style="font-size:25px;"></span>
-					</a> <br> <br>
 
-					<label for="class" style="font-size:25px;">Class Messages</label>
-					<a href="#" class="cMessages" id="cMessages" data-toggle="dropdown">
-						<span class="label label-pill label-danger countG" style="border-radius:20px;"></span>
-						<span class="glyphicon glyphicon-envelope" style="font-size:25px;"></span>
-					</a> <br>
-				</div>
+		<div class="container">
+			<div id="st-box">
+				<h1> Messages</h1><br>
+				<hr>
+				<label for="personal" style="font-size:25px;">Personal Messages</label>
+				<a href="#" class="pMessages" id="pMessages" data-toggle="dropdown">
+					<span class="label label-pill label-danger countP" style="border-radius:20px;"></span>
+					<span class="glyphicon glyphicon-envelope" style="font-size:25px;"></span>
+				</a> <br> <br>
 
-				<div id="nd-box">
-					<h1> Classes</h1><br>
-					<hr>
+				<label for="class" style="font-size:25px;">Class Messages</label>
+				<a href="#" class="cMessages" id="cMessages" data-toggle="dropdown">
+					<span class="label label-pill label-danger countG" style="border-radius:20px;"></span>
+					<span class="glyphicon glyphicon-envelope" style="font-size:25px;"></span>
+				</a> <br>
+			</div>
 
-					<!--
+			<div id="nd-box">
+				<h1> Classes</h1><br>
+				<hr>
+
+				<!--
 					<label for="personal" style="font-size:15px;">Grade</label>
 					<a href="#" class="pMessages" id="pMessages" data-toggle="dropdown">
 						<span class="label label-pill label-danger count" style="border-radius:20px;"></span>
@@ -148,15 +148,15 @@ if (!isset($_SESSION['username'])) {
 					</a> <br>
 					-->
 
-					</form>
-				</div>
-				<div id="rd-box">
-					<h1> To-do List</h1><br>
-					<hr>
-
-				</div>
+				</form>
 			</div>
-	
+			<div id="rd-box">
+				<h1> To-do List</h1><br>
+				<hr>
+
+			</div>
+		</div>
+
 	</div>
 </body>
 
@@ -167,65 +167,65 @@ if (!isset($_SESSION['username'])) {
 </html>
 
 
-<script >
+<script>
 	// Personal notification 
 	$(document).ready(function() {
-        function pMessages(view_personal = '') {
-            $.ajax({
-                url: "include/fetch.php"
-                method: "POST",
-                data: {
-                    view_personal: view_personal
-                },
-                dataType: "json",
-                success: function(data) {
-                    $('.dropdown-menu').html(data.notification_personal);
-                    if (data.unseen_notification_personal > 0) {
-                        $('.countP').html(data.unseen_notification_personal);
-                    }
-                }
-            });
-        }
- 
-        pMessages();
-        $(document).on('click', '.pMessages', function() {
-            $('.countP').html('');
-            pMessages('yes');
-        });
- 
-        setInterval(function() {
-            pMessages();;
-        }, 1000);
-    });
- 
-    // Class notification
- 
-    $(document).ready(function() {
-        function cMessages(view_class = '') {
-            $.ajax({
-                url: "include/fetch.php",
-                method: "POST",
-                data: {
-                    view_class: view_class
-                },
-                dataType: "json",
-                success: function(data) {
-                    $('.dropdown-menu').html(data.notification_group);
-                    if (data.unseen_notification_group > 0) {
-                        $('.countG').html(data.unseen_notification_group);
-                    }
-                }
-            });
-        }
- 
-        cMessages();
-        $(document).on('click', '.cMessages', function() {
-            $('.countG').html('');
-            cMessages('yes');
-        });
- 
-        setInterval(function() {
-            cMessages();;
-        }, 1000);
-    });
+		function pMessages(view_personal = '') {
+			$.ajax({
+				url: "include/fetch.php",
+				method: "POST",
+				data: {
+					view_personal: view_personal
+				},
+				dataType: "json",
+				success: function(data) {
+					$('.dropdown-menu').html(data.notification_personal);
+					if (data.unseen_notification_personal > 0) {
+						$('.countP').html(data.unseen_notification_personal);
+					}
+				}
+			});
+		}
+
+		pMessages();
+		$(document).on('click', '.pMessages', function() {
+			$('.countP').html('');
+			pMessages('yes');
+		});
+
+		setInterval(function() {
+			pMessages();;
+		}, 1000);
+	});
+
+	// Class notification
+
+	$(document).ready(function() {
+		function cMessages(view_class = '') {
+			$.ajax({
+				url: "include/fetch.php",
+				method: "POST",
+				data: {
+					view_class: view_class
+				},
+				dataType: "json",
+				success: function(data) {
+					$('.dropdown-menu').html(data.notification_group);
+					if (data.unseen_notification_group > 0) {
+						$('.countG').html(data.unseen_notification_group);
+					}
+				}
+			});
+		}
+
+		cMessages();
+		$(document).on('click', '.cMessages', function() {
+			$('.countG').html('');
+			cMessages('yes');
+		});
+
+		setInterval(function() {
+			cMessages();;
+		}, 1000);
+	});
 </script>
