@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 13, 2020 at 05:44 PM
+-- Generation Time: Sep 17, 2020 at 05:20 PM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 7.3.2
 
@@ -19,8 +19,17 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `tinytubieseducare`
+-- Database: `tinytubbieseducare`
 --
+
+DELIMITER $$
+--
+-- Procedures
+--
+CREATE DEFINER=`root`@`localhost` PROCEDURE `unreadMessages` (IN `user` VARCHAR(255))  NO SQL
+SELECT * FROM users_chat WHERE receiver_username = user && msg_status="unread"$$
+
+DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -51,6 +60,19 @@ CREATE TABLE `class` (
   `school_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `groupchat`
+--
+
+CREATE TABLE `groupchat` (
+  `id` int(11) NOT NULL,
+  `subject` varchar(255) NOT NULL,
+  `text` text NOT NULL,
+  `message_status` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -102,7 +124,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`user_id`, `user_name`, `user_pass`, `user_email`, `user_profile`, `user_country`, `user_gender`, `forgotten_answer`, `log_in`) VALUES
-(1, 'chiko', '12345678', 'chiko@gmail.com', 'images/mcLogo.png.40', 'Camps Bay', 'Male', 'chikomutandwa', 'Offline'),
+(1, 'chiko', '12345678', 'chiko@gmail.com', 'images/mcLogo.png.40', 'Camps Bay', 'Male', 'chikomutandwa', 'Online'),
 (3, 'sam', '12345678', 'sam@gmail.com', 'images/black-background-hd-wallpapers-11.jpg.52', 'GrassyPark', 'Male', '', 'Offline'),
 (4, 'mutale', '12345678', 'mutale@gmail.com', 'images/images.png', 'Clarmont', 'Female', '', 'Offline'),
 (5, 'Kangwa', '87654321', 'kangwa@gmail.com', 'images/1509844786195.jpeg.69', 'Mowbray', 'Female', '', 'Offline'),
@@ -129,7 +151,7 @@ CREATE TABLE `users_chat` (
 --
 
 INSERT INTO `users_chat` (`msg_id`, `sender_username`, `receiver_username`, `msg_content`, `msg_status`, `msg_date`) VALUES
-(2, 'mutale', 'chiko', 'hi', 'read', '2020-07-20 21:26:37'),
+(2, 'mutale', 'chiko', 'hi', 'unread', '2020-07-20 21:26:37'),
 (3, 'chiko', 'mutale', 'how are you', 'read', '2020-07-20 21:33:30'),
 (4, 'mutale', 'chiko', 'hi', 'read', '2020-07-20 21:33:45'),
 (5, 'mutale', 'chiko', 'hi', 'read', '2020-07-21 13:28:43'),
@@ -176,7 +198,8 @@ INSERT INTO `users_chat` (`msg_id`, `sender_username`, `receiver_username`, `msg
 (46, 'chiko', 'sam', 'hi', 'read', '2020-08-28 09:36:24'),
 (47, 'chiko', 'sam', 'hi', 'read', '2020-08-28 09:38:23'),
 (48, 'chiko', 'sam', 'hi', 'read', '2020-08-28 09:38:35'),
-(49, 'sam', 'chiko', 'let me refresh the page ', 'read', '2020-08-28 09:41:00');
+(49, 'sam', 'chiko', 'let me refresh the page ', 'read', '2020-08-28 09:41:00'),
+(50, 'chiko', 'sam', 'Hello sam', 'unread', '2020-09-13 15:51:09');
 
 --
 -- Indexes for dumped tables
@@ -238,7 +261,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `users_chat`
 --
 ALTER TABLE `users_chat`
-  MODIFY `msg_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
+  MODIFY `msg_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
 
 --
 -- Constraints for dumped tables

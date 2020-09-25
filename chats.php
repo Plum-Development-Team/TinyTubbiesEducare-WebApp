@@ -54,7 +54,7 @@
                                             </td>
         
                                             <td>
-                                                <a href="dashboard.php">
+                                                <a href="Dashboard/dashboard.php">
                                                     <button name="logout" class="btn btn-danger search-icon">
                                                         <span class="glyphicon glyphicon-log-out"></span>
                                                         DASHBOARD
