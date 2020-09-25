@@ -77,13 +77,13 @@ if (!isset($_SESSION['username'])) {
 					<h1> Classes</h1><br>
 					<hr>
 
-					<!--
-					<label for="personal" style="font-size:15px;">Grade</label>
-					<a href="#" class="pMessages" id="pMessages" data-toggle="dropdown">
+					
+					<label for="grade" style="font-size:25px;">Grade</label>
+					<a href="#" class="grade" id="grade" data-toggle="dropdown">
 						<span class="label label-pill label-danger count" style="border-radius:20px;"></span>
 						<span class="glyphicon glyphicon-envelope" style="font-size:25px;"></span>
 					</a> <br>
-					-->
+					
 
 					</form>
 				</div>
