@@ -54,11 +54,7 @@ if (!isset($_SESSION['username'])) {
 		</div>
 	</header>
 
-	
+
 </body>
-
-
-
-
 
 </html>
