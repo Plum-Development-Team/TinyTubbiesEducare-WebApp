@@ -119,43 +119,22 @@ if (!isset($_SESSION['username'])) {
 
   <div class="pos">
 
-    <div class="container">
-      <div id="st-box">
-        <h1> Messages</h1><br>
-        <hr>
-        <label for="personal" style="font-size:25px;">Personal Messages</label>
-        <a href="#" class="pMessages" id="pMessages" data-toggle="dropdown">
-          <span class="label label-pill label-danger countP" style="border-radius:20px;"></span>
-          <span class="glyphicon glyphicon-envelope" style="font-size:25px;"></span>
-        </a> <br> <br>
 
-        <label for="class" style="font-size:25px;">Class Messages</label>
-        <a href="#" class="cMessages" id="cMessages" data-toggle="dropdown">
-          <span class="label label-pill label-danger countG" style="border-radius:20px;"></span>
-          <span class="glyphicon glyphicon-envelope" style="font-size:25px;"></span>
-        </a> <br>
-      </div>
+    <label for="grade" style="font-size:25px;">Grade</label>
+    <a href="#" class="grade" id="grade" data-toggle="dropdown">
+      <span class="label label-pill label-danger count" style="border-radius:20px;"></span>
+      <span class="glyphicon glyphicon-envelope" style="font-size:25px;"></span>
+    </a> <br>
 
-      <div id="nd-box">
-        <h1> Classes</h1><br>
-        <hr>
 
-        <!--
-					<label for="personal" style="font-size:15px;">Grade</label>
-					<a href="#" class="pMessages" id="pMessages" data-toggle="dropdown">
-						<span class="label label-pill label-danger count" style="border-radius:20px;"></span>
-						<span class="glyphicon glyphicon-envelope" style="font-size:25px;"></span>
-					</a> <br>
-					-->
+    </form>
+  </div>
+  <div id="rd-box">
+    <h1> To-do List</h1><br>
+    <hr>
 
-        </form>
-      </div>
-      <div id="rd-box">
-        <h1> To-do List</h1><br>
-        <hr>
-
-      </div>
-    </div>
+  </div>
+  </div>
 
   </div>
 </body>
