@@ -26,7 +26,7 @@
     <header class="lg:px-16 px-6 bg-white flex flex-wrap items-center lg:py-0 py-2">
         <div class="flex-1 flex justify-between items-center" >
             <a href="index.php">
-                <img id="logo" src="Resources/Logo.png" alt="" style=" height:150px;" >
+                <img id="logo" src="Resources/Logo.png" alt="" style=" height:70px;" >
 
             </a>
         </div>
