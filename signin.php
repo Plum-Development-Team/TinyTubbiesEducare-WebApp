@@ -12,13 +12,13 @@
         <link rel="stylesheet" type="text/css" href="css/signin.css">
         <style>
         .form-header{
-            background-color:blue;
+            background-color:darkcyan;
         }
           </style>
     </head>
     <body>
         <div class="signin-form">
-            <form action="Dashboard\dashboard.php" method="post">
+            <form action="" method="post">
                 <div class="form-header">
                     <h2>Sign In</h2>
                     <p>Tiny Tubbies eduCare</p>
