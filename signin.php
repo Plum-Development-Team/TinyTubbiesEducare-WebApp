@@ -12,7 +12,7 @@
         <link rel="stylesheet" type="text/css" href="css/signin.css">
         <style>
         .form-header{
-            background-color:blue;
+            background-color:darkcyan;
         }
           </style>
     </head>
@@ -21,7 +21,7 @@
             <form action="" method="post">
                 <div class="form-header">
                     <h2>Sign In</h2>
-                    <p>Tiny Tubbies edc Care</p>
+                    <p>Tiny Tubbies eduCare</p>
                 </div>
                 <div class="form-group">
                     <label>Email</label>
@@ -31,7 +31,7 @@
                     <label>Password</label>
                     <input type="password" class="form-control" placeholder="Password" name="pass" autocomplete="off" required="required">
                 </div>
-                <div class="small">Forgot password? <a href="forgot_pass.php">Click Here</a></div><br>
+                <div class="small">Forgot password? Some Help? <a href="help page/help.php">Click Here</a></div><br>
                 <div class="form-group">
                     <button type="submit" class="btn btn-primary btn-block btn-lg" name="sign_in">Sign in</button>
                 </div>
