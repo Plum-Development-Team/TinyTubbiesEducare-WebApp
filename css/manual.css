@@ -14,22 +14,19 @@
   height: auto;
   box-shadow: none;
   }
-.footer{
+#footer{
   padding: 10px 15px;
   text-align: center;
-  background-color: black;
-  color:white;
   position: relative;
   left: 0;
   bottom: 0;
   width: 100%;
   font-size:20px;
-  font-family: 'Pacifico', sans-serif;
 }
 p{
   font-size: 17px;
   line-height: normal;
-  font-family: 'Courgette', sans-serif;
+  font-family: 'Lato', sans-serif;
   text-align: center;
 }
 
@@ -37,8 +34,9 @@ h2{
   font-size: 20px;
   font-weight: bold;
   text-align: center;
-  font-family: 'Pacifico', sans-serif;
+  font-family: 'Lato', sans-serif;
 }
+
 h1{
   font-size: 30px;
   font-weight: bold;
@@ -46,12 +44,19 @@ h1{
   font-family: 'Pacifico', sans-serif;
 }
 hr{
-  border-top: 2px solid black;
+  border:none;
+  height: 20px;
+ 	width: 30%;
+	height: 50px;
+	margin-top: 0;
+	border-bottom: 1px solid #1f1209;
+	box-shadow: 0 20px 20px -20px #333;
+  margin: -50px auto 10px; 
 }
 
 html{
-  background: #7F7FD5;  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to right, #91EAE4, #86A8E7, #7F7FD5);  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to right, #91EAE4, #86A8E7, #7F7FD5); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: #c2e59c;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #64b3f4, #c2e59c);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #64b3f4, #c2e59c); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   
 }
