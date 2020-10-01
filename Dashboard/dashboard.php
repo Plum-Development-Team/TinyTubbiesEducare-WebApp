@@ -185,7 +185,7 @@ if (!isset($_SESSION['username'])) {
                             class="underline text-blue-400">Saas</span></h1>
                     <button
                         class="mt-4 px-4 py-2 bg-blue-600 text-white text-sm uppercase font-medium rounded hover:bg-blue-500 focus:outline-none focus:bg-blue-500">
-                        <a href="../chats.php"><img
+                        <a href="../chats.php?user_name=<?php echo $_SESSION['username']?>"><img
                             class="w-10" src="https://www.flaticon.com/svg/static/icons/svg/3214/3214931.svg"
                             alt=""></a>
                     </button>
@@ -206,7 +206,7 @@ if (!isset($_SESSION['username'])) {
                     <div class="px-6 py-4">
                         <h3 class="font-bold text-xl mb-2">Messages</h3>
                         <div class=" list-disc text-grey-darker text-base">
-                            <li><a href=""> Personal Message</a></li>
+                            <li><a href="../chats.php?user_name=<?php echo $_SESSION['username']?>"> Personal Message</a></li>
                             <li><a href="">Group Message</a> </li>
                         </div>
                     </div>
