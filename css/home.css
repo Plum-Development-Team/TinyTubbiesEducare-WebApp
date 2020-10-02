@@ -125,14 +125,14 @@
     font-size: 12px;
 }
 
-.rightside-left-chat,
-.rightside-right-chat {
+.right-side-left-chat,
+.right-side-right-chat {
     float: left;
     width: 80%;
     position: relative;
 }
 
-.rightside-right-chat {
+.right-side-right-chat {
     float: right;
     margin-right: 35px;
 }
@@ -148,15 +148,15 @@
     margin-top: 20px;
 }
 
-.right-header-contentChat .rightside-left-chat p,
-.right-header-contentChat .rightside-right-chat p {
+.right-header-contentChat .right-side-left-chat p,
+.right-header-contentChat .right-side-right-chat p {
     background-color: rgb(106, 109, 105);
     padding: 15px;
     border-radius: 8px;
     color: #fff;
 }
 
-.right-header-contentChat .rightside-right-chat p {
+.right-header-contentChat .right-side-right-chat p {
     background-color: rgb(140, 172, 202);
 }
 
@@ -183,26 +183,26 @@
     background-color: rgb(241, 197, 203);
 }
 
-.rightside-left-chat span i,
-.rightside-right-chat span i {
+.right-side-left-chat span i,
+.right-side-right-chat span i {
     color: rgb(162, 180, 154);
     font-size: 12px;
 }
 
-.rightside-right-chat span i {
+.right-side-right-chat span i {
     color: #94C2ED;
 }
 
-.rightside-right-chat span {
+.right-side-right-chat span {
     float: right;
 }
 
-.rightside-right-chat span small,
-.rightside-left-chat span small {
+.right-side-right-chat span small,
+.right-side-left-chat span small {
     color: #BDBDC2;
 }
 
-.rightside-left-chat:before {
+.right-side-left-chat:before {
     content: " ";
     position: absolute;
     top: 14px;
@@ -213,7 +213,7 @@
     z-index: 1;
 }
 
-.rightside-right-chat:before {
+.right-side-right-chat:before {
     content: " ";
     position: absolute;
     top: 14px;
