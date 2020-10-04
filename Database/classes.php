@@ -1,0 +1,10 @@
+<?php
+    require("database.php");
+    require("user.php");
+    require("group.php");
+    require("student.php");
+    require("message.php");
+    require("class_room.php");
+    require("group_message.php");
+    require("files.php");
+?>

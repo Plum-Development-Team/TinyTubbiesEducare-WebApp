@@ -1,37 +1,26 @@
 <?php
-    $con = mysqli_connect("localhost","root","","tinytubbieseducare");
 
-	$user = "SELECT * FROM users";
-			
-	$run_user = mysqli_query($con,$user);
-			
-	while ($row_user = mysqli_fetch_array($run_user)){
-			
-        $user_id = $row_user['user_id'];
-        $user_name = $row_user['user_name'];
-        $user_profile = $row_user['user_profile'];
-        $login = $row_user['log_in'];
-        
-        // if user clicks on another users account 
-        echo"
-            <li>
-                <div class='chat-left-img'>
-                    <img src='$user_profile'>
-                </div>
-                <div class='chat-left-detail'>
-                    <p><a href='chats.php?user_name=$user_name'><label>$user_name</label></a></p>";
-                    if($login == 'Online'){
-                        echo "<span><i class='fa fa-circle' aria-hidden='true'></i> Online</span>";
-                    }else{
-                        echo "<span><i class='fa fa-circle-o' aria-hidden='true'></i> Offline</span>";
-                    }
+$user = $_SESSION["user"];
+foreach ((new User)->getAll() as $_user) {
 
-                    "
-                </div>
-            </li>
-            
-        ";
-	}
-?>
+    //going through all users in the database checking if they are online and if they have any unread messages
+    if ($user->id == $_user->id) continue;
+    $icon = $_user->isLoggedin() ? '' : '-o';
+    $status = $_user->isLoggedin() ? 'On' : 'Off';
+    $count = Message::count(UNREAD, $_user->id, $user->id);
+    $notification = $count->value >= 1 ? "<span class='notification label label-success' data-id='$_user->id'>New Messages: $count->value</span>" : "";
 
- 
+    // displaying the users in a list on the side
+    echo <<<html
+        <li id="contact-$_user->id" class="user-chat" data-id="$_user->id">
+            <div class='chat-left-img'>
+                    <img src="$_user->profile_pic" alt="$_user->profile_pic">
+            </div>
+            <div class='chat-left-detail' data-id="$_user->id">
+                    <p><a><label>$_user->fullname</label></a></p>
+                    <span class="user-status"  data-id="$_user->id"><i class="fa fa-circle$icon" style="margin: 2px" aria-hidden='true'></i>{$status}line</span>
+                    $notification
+            </div>
+        </li>
+html;
+}

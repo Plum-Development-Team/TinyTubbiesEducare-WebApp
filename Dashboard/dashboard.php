@@ -3,7 +3,7 @@ session_start();
 
 if (!isset($_SESSION['username'])) {
 	$_SESSION['msg'] = "You must log in first";
-	header('location: sign-in.php');
+	header('location: ../sign-in.php');
 }
 
 /*if (isset($_GET['logout'])) {
@@ -206,8 +206,8 @@ if (!isset($_SESSION['username'])) {
                     <div class="px-6 py-4">
                         <h3 class="font-bold text-xl mb-2">Messages</h3>
                         <div class=" list-disc text-grey-darker text-base">
-                            <li><a href="../chats.php?user_name=<?php echo $_SESSION['username']?>"> Personal Message</a></li>
-                            <li><a href="">Group Message</a> </li>
+                            <li><a href="../home.php"> Personal Message</a></li>
+                            <li><a href="../group_chat.php">Group Message</a> </li>
                         </div>
                     </div>
                     <!-- <div class="px-6 py-4">
@@ -254,7 +254,7 @@ if (!isset($_SESSION['username'])) {
                     <div class="px-6 py-4">
                         <div class="font-bold text-xl mb-2">Repository</div>
                         <div class="list-disc text-grey-darker text-base">
-                            <li><a href="">Dropbox</a></li>
+                            <li><a href="../dropbox-upload.php">Dropbox</a></li>
                             <li><a href="">Google Drive</a></li>
                         </div>
                     </div>
