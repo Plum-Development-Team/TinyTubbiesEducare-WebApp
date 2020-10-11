@@ -2,8 +2,36 @@
 session_start();
 
 if (!isset($_SESSION['username'])) {
-	$_SESSION['msg'] = "You must log in first";
-	header('location: ../sign-in.php');
+    $_SESSION['msg'] = "You must log in first";
+    header('location: ../sign-in.php');
+}
+
+require_once 'app/init.php';
+
+// Calling items 
+$itemsQuery = $db->prepare("
+    SELECT id , name, done
+    FROM items
+    WHERE user = :user
+");
+
+$itemsQuery->execute([
+    'user' => $_SESSION['user_id']
+]);
+
+$items = $itemsQuery->rowCount() ? $itemsQuery : [];
+
+// delete item 
+if (isset($_GET['del_task'])) {
+    $id = $_GET['del_task'];
+    $delQuery = $db->prepare("
+    DELETE FROM items
+    WHERE id = :id
+    ");
+    $delQuery->execute([
+        'id' => $id
+    ]);
+    header('Location: dashboard.php');
 }
 
 /*if (isset($_GET['logout'])) {
@@ -22,10 +50,8 @@ if (!isset($_SESSION['username'])) {
     <title>Dashboard</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
-        integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
@@ -40,8 +66,7 @@ if (!isset($_SESSION['username'])) {
 
     <link rel="stylesheet" type="text/css" href="assets/css/todos.css">
     <link href='https://fonts.googleapis.com/css?family=Roboto:400,700,500' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.css">
     <script type="text/javascript" src="assets/js/lib/jquery-2.1.4.min.js"></script>
 
 
@@ -79,6 +104,27 @@ if (!isset($_SESSION['username'])) {
         vertical-align: middle;
     }
 
+    /*submit button*/
+    .submit {
+        padding: 5px 10px;
+        border: solid#ddd;
+        margin-top: 10px;
+    }
+
+    /* mark button*/
+    .mark a {
+        color: white;
+        background: #a52a2a;
+        padding: 1px 6px;
+        border-radius: 3px;
+        text-decoration: none;
+    }
+
+
+    /* item marker */
+    .item.done {
+        text-decoration: line-through;
+    }
 
     /* Responsive layout - makes a two column-layout instead of four columns */
     @media (max-width: 1120px) {
@@ -126,23 +172,19 @@ if (!isset($_SESSION['username'])) {
 
     <!-- navbar with tailwindcss -->
     <header>
-        <nav class="bg-white shadow">
+        <nav cla ss="bg-white shadow">
             <div class="container mx-auto px-6 py-3 ">
                 <div class="md:flex md:items-center md:justify-between">
                     <div class="flex justify-between items-center">
                         <div class="text-xl font-semibold text-gray-700">
-                            <a href="#" class="text-gray-800 text-xl font-bold hover:text-gray-700 md:text-2xl"><img
-                                    id="brand-logo" src="../Resources/Logo.png" alt=""></a>
+                            <a href="#" class="text-gray-800 text-xl font-bold hover:text-gray-700 md:text-2xl"><img id="brand-logo" src="../Resources/Logo.png" alt=""></a>
                         </div>
 
                         <!-- Mobile menu button -->
                         <div class="flex md:hidden" onclick="toggle()">
-                            <button type="button"
-                                class="text-gray-500 hover:text-gray-600 focus:outline-none focus:text-gray-600"
-                                aria-label="toggle menu">
+                            <button type="button" class="text-gray-500 hover:text-gray-600 focus:outline-none focus:text-gray-600" aria-label="toggle menu">
                                 <svg viewBox="0 0 24 24" class="h-6 w-6 fill-current">
-                                    <path fill-rule="evenodd"
-                                        d="M4 5h16a1 1 0 0 1 0 2H4a1 1 0 1 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2z">
+                                    <path fill-rule="evenodd" d="M4 5h16a1 1 0 0 1 0 2H4a1 1 0 1 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2z">
                                     </path>
                                 </svg>
                             </button>
@@ -151,22 +193,20 @@ if (!isset($_SESSION['username'])) {
 
                     <!-- Mobile Menu open: "block", Menu closed: "hidden" -->
                     <div class="hidden -mx-4 md:flex md:items-center" id="menu">
-                        <a href="../help page/help.php" target="blank"
-                            class="block mx-4 mt-2 md:mt-0 text-sm text-gray-700 capitalize hover:text-blue-600">Help?
+                        <a href="../help page/help.php" target="blank" class="block mx-4 mt-2 md:mt-0 text-sm text-gray-700 capitalize hover:text-blue-600">Help?
                         </a>
 
                         <div class="user-profile">
                             <!-- logged in user information -->
                             <?php if (isset($_SESSION['username'])) : ?>
-                            <p>
-                                <a href="../account_settings.php">
-                                    <strong><?php echo $_SESSION['username']; ?></strong>
-                                    <!--Need to change image to profile pic of account-->
-                                    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/3364143/download+%281%29.png"
-                                        alt="profile pic" style="width:42px;height:42px;">
-                                </a>
-                                <a href="../signin.php?logout='1'" style="color: red;">logout</a>
-                            </p>
+                                <p>
+                                    <a href="../account_settings.php">
+                                        <strong><?php echo $_SESSION['username']; ?></strong>
+                                        <!--Need to change image to profile pic of account-->
+                                        <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/3364143/download+%281%29.png" alt="profile pic" style="width:42px;height:42px;">
+                                    </a>
+                                    <a href="../signin.php?logout='1'" style="color: red;">logout</a>
+                                </p>
                             <?php endif ?>
                         </div>
 
@@ -177,17 +217,12 @@ if (!isset($_SESSION['username'])) {
             </div>
         </nav>
 
-        <div class="w-full bg-cover bg-center"
-            style="height:32rem; background-image: url(https://images.unsplash.com/photo-1504384308090-c894fdcc538d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80);">
+        <div class="w-full bg-cover bg-center" style="height:32rem; background-image: url(https://images.unsplash.com/photo-1504384308090-c894fdcc538d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80);">
             <div class="flex items-center justify-center h-full w-full bg-gray-900 bg-opacity-50">
                 <div class="text-center">
-                    <h1 class="text-white text-2xl font-semibold uppercase md:text-3xl">Let's Communicate <span
-                            class="underline text-blue-400">Saas</span></h1>
-                    <button
-                        class="mt-4 px-4 py-2 bg-blue-600 text-white text-sm uppercase font-medium rounded hover:bg-blue-500 focus:outline-none focus:bg-blue-500">
-                        <a href="../chats.php?user_name=<?php echo $_SESSION['username']?>"><img
-                            class="w-10" src="https://www.flaticon.com/svg/static/icons/svg/3214/3214931.svg"
-                            alt=""></a>
+                    <h1 class="text-white text-2xl font-semibold uppercase md:text-3xl">Let's Communicate <span class="underline text-blue-400">Saas</span></h1>
+                    <button class="mt-4 px-4 py-2 bg-blue-600 text-white text-sm uppercase font-medium rounded hover:bg-blue-500 focus:outline-none focus:bg-blue-500">
+                        <a href="../chats.php?user_name=<?php echo $_SESSION['username'] ?>"><img class="w-10" src="https://www.flaticon.com/svg/static/icons/svg/3214/3214931.svg" alt=""></a>
                     </button>
                 </div>
             </div>
@@ -199,9 +234,7 @@ if (!isset($_SESSION['username'])) {
         <div class="row">
             <div class="column">
                 <div class="max-w-xs rounded overflow-hidden shadow-lg my-2">
-                    <img class="w-20 mb-2 " style="display: block; margin-left: auto; margin-right: auto;"
-                        src="https://www.flaticon.com/svg/static/icons/svg/546/546394.svg"
-                        alt="Sunset in the mountains">
+                    <img class="w-20 mb-2 " style="display: block; margin-left: auto; margin-right: auto;" src="https://www.flaticon.com/svg/static/icons/svg/546/546394.svg" alt="Sunset in the mountains">
                     <hr class="bg-gray-100" style="border-top: 3px double gray;">
                     <div class="px-6 py-4">
                         <h3 class="font-bold text-xl mb-2">Messages</h3>
@@ -223,9 +256,7 @@ if (!isset($_SESSION['username'])) {
 
             <div class="column">
                 <div class="max-w-xs rounded overflow-hidden shadow-lg my-2">
-                    <img class="w-20 mb-2" style="display: block; margin-left: auto; margin-right: auto;"
-                        src="https://www.flaticon.com/svg/static/icons/svg/991/991922.svg"
-                        alt="Sunset in the mountains">
+                    <img class="w-20 mb-2" style="display: block; margin-left: auto; margin-right: auto;" src="https://www.flaticon.com/svg/static/icons/svg/991/991922.svg" alt="Sunset in the mountains">
                     <hr class="bg-gray-100" style=" border-top: 3px double gray;">
                     <div class="px-6 py-4">
                         <div class="font-bold text-xl mb-2">Classes</div>
@@ -247,9 +278,7 @@ if (!isset($_SESSION['username'])) {
 
             <div class="column">
                 <div class="max-w-xs rounded overflow-hidden shadow-lg my-2">
-                    <img class="w-20 mb-2" style="display: block; margin-left: auto; margin-right: auto;"
-                        src="https://www.flaticon.com/svg/static/icons/svg/1831/1831998.svg"
-                        alt="Sunset in the mountains">
+                    <img class="w-20 mb-2" style="display: block; margin-left: auto; margin-right: auto;" src="https://www.flaticon.com/svg/static/icons/svg/1831/1831998.svg" alt="Sunset in the mountains">
                     <hr class="bg-gray-100" style=" border-top: 3px double gray;">
                     <div class="px-6 py-4">
                         <div class="font-bold text-xl mb-2">Repository</div>
@@ -270,17 +299,60 @@ if (!isset($_SESSION['username'])) {
             </div>
 
             <div class="column" style="float: right;">
-                <h1>To-Do List <i class="fa fa-plus"></i></h1>
-                <input type="text" placeholder="Add New Todo">
+                <div class="list">
+                    <form class="item-add" action="add.php" method="POST">
+                        <h1>To-Do List
+                            <button type="submit" value="add" class="submit">+</button>
+                        </h1>
+                        <input type="text" name="name" placeholder="Add New Todo" class="input" autocomplete="off" required>
+                    </form>
 
-                <ul>
-                    <li><span><i class="fa fa-trash"></i></span> Go To Potions Class</li>
-                    <li><span><i class="fa fa-trash"></i></span> Buy New Robes</li>
-                    <li><span><i class="fa fa-trash"></i></span> Visit Hagrid</li>
-                </ul>
+                    <!-- if No items in list-->
+                    <?php if (!empty($items)) : ?>
+
+                        <!-- Add ite
+                          ms to list from DB-->
+                        <ul class="items">
+
+                            <?php foreach ($items as $item) :
+                                /*
+                                $style = '';
+                                if ($item["done"] == '1') {
+                                    $style = 'text-decoration: line-through';
+                                }
+                                */
+                            ?>
+
+                                <li>
+                                    <!-- Delete -->
+                                    <span><a href=" dashboard.php?del_task=<?php echo $item['id']; ?>" ">X</a></span>
+                                    <span class=" mark">
+                                            <!-- Mark item thats done -->
+                                            <?php if (!$item['done']) : ?>
+                                                <a href="mark.php?as=done&item=<?php echo $item['id']; ?>" class="done-button">M</a>
+                                            <?php endif; ?>
+                                            <!-- uncheck marked item -->
+                                            <?php if ($item['done']) : ?>
+                                                <a href="mark.php?as=notdone&item=<?php echo $item['id']; ?>" class="done-button">U</a>
+                                            <?php endif; ?>
+
+                                    </span>
+
+                                    <!-- List Items -->
+                                    <label class="item<?php echo $item['done'] ? 'done' : '' ?> "> <?php echo $item['name'] ?> </label>
+
+                                </li>
+
+                            <?php endforeach; ?>
+                        </ul>
+                    <?php else : ?>
+                        <p>You have no items in list yet</p>
+                    <?php endif; ?>
+                </div>
+
             </div>
-
         </div>
+
         <footer class="w-full text-center border-t border-grey p-4 pin-b mt-20" style="color: rgb(45, 107, 136);">@2020
             Reserved Tiny Tubbies Educare
         </footer>
@@ -296,16 +368,16 @@ if (!isset($_SESSION['username'])) {
 </html>
 <script>
     // Personal notification 
-    $(document).ready(function () {
+    $(document).ready(function() {
         function pMessages(view_personal = '') {
             $.ajax({
-                url: "include/fetch.php"
+                url: "include/fetch.php",
                 method: "POST",
                 data: {
                     view_personal: view_personal
                 },
                 dataType: "json",
-                success: function (data) {
+                success: function(data) {
                     $('.dropdown-menu').html(data.notification_personal);
                     if (data.unseen_notification_personal > 0) {
                         $('.countP').html(data.unseen_notification_personal);
@@ -315,19 +387,19 @@ if (!isset($_SESSION['username'])) {
         }
 
         pMessages();
-        $(document).on('click', '.pMessages', function () {
+        $(document).on('click', '.pMessages', function() {
             $('.countP').html('');
             pMessages('yes');
         });
 
-        setInterval(function () {
+        setInterval(function() {
             pMessages();;
         }, 1000);
     });
 
     // Class notification
 
-    $(document).ready(function () {
+    $(document).ready(function() {
         function cMessages(view_class = '') {
             $.ajax({
                 url: "include/fetch.php",
@@ -336,7 +408,7 @@ if (!isset($_SESSION['username'])) {
                     view_class: view_class
                 },
                 dataType: "json",
-                success: function (data) {
+                success: function(data) {
                     $('.dropdown-menu').html(data.notification_group);
                     if (data.unseen_notification_group > 0) {
                         $('.countG').html(data.unseen_notification_group);
@@ -346,12 +418,12 @@ if (!isset($_SESSION['username'])) {
         }
 
         cMessages();
-        $(document).on('click', '.cMessages', function () {
+        $(document).on('click', '.cMessages', function() {
             $('.countG').html('');
             cMessages('yes');
         });
 
-        setInterval(function () {
+        setInterval(function() {
             cMessages();;
         }, 1000);
     });
