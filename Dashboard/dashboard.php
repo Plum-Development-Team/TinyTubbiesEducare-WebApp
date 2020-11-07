@@ -104,27 +104,6 @@ if (isset($_GET['del_task'])) {
         vertical-align: middle;
     }
 
-    /*submit button*/
-    .submit {
-        padding: 5px 10px;
-        border: solid#ddd;
-        margin-top: 10px;
-    }
-
-    /* mark button*/
-    .mark a {
-        color: white;
-        background: #a52a2a;
-        padding: 1px 6px;
-        border-radius: 3px;
-        text-decoration: none;
-    }
-
-
-    /* item marker */
-    .item.done {
-        text-decoration: line-through;
-    }
 
     /* Responsive layout - makes a two column-layout instead of four columns */
     @media (max-width: 1120px) {
@@ -302,7 +281,7 @@ if (isset($_GET['del_task'])) {
                 <div class="list">
                     <form class="item-add" action="add.php" method="POST">
                         <h1>To-Do List
-                            <button type="submit" value="add" class="submit">+</button>
+                            <button type="submit" id="add" class="submit">+</button>
                         </h1>
                         <input type="text" name="name" placeholder="Add New Todo" class="input" autocomplete="off" required>
                     </form>
@@ -325,7 +304,7 @@ if (isset($_GET['del_task'])) {
 
                                 <li>
                                     <!-- Delete -->
-                                    <span><a href=" dashboard.php?del_task=<?php echo $item['id']; ?>" ">X</a></span>
+                                    <span class="delete"><a href=" dashboard.php?del_task=<?php echo $item['id']; ?>" ">X</a></span>
                                     <span class=" mark">
                                             <!-- Mark item thats done -->
                                             <?php if (!$item['done']) : ?>

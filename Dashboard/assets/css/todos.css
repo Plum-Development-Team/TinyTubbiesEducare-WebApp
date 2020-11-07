@@ -29,12 +29,9 @@ h1 {
 	font-weight: normal;
 }
 
-.fa-plus {
+.add {
 	float: right;
 }
-
-
-
 
 li {
 	background: #fff;
@@ -47,7 +44,7 @@ li:nth-child(2n) {
 	background: #f7f7f7;
 }
 
-span {
+span .delete {
 	background: #e74c3c;
 	height: 40px;
 	margin-right: 20px;
@@ -88,7 +85,27 @@ input:focus {
 	padding: 5%;
 }
 
-.completed {
+.done {
 	color: gray;
 	text-decoration: line-through;
 }
+    /*submit button*/
+    .submit {
+        padding: 5px 10px;
+        border: solid#ddd;
+        margin-top: 10px;
+    }
+
+    /* mark button*/
+    .mark a {
+        color: white;
+        background: #a52a2a;
+        padding: 1px 6px;
+        border-radius: 3px;
+        text-decoration: none;
+    }
+
+    /* item marker */
+    .item.done {
+        text-decoration: line-through;
+    }
